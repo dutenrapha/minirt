@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/28 18:47:48 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/28 18:50:19 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_config	config;
-	t_world		w;
+	t_list	*new;
+	t_list	*temp;
 
-	if (ft_prevalidation(argc, argv))
+	new = NULL;
+	if (lst)
 	{
-		return (0);
+		while (lst)
+		{
+			if (!(temp = ft_lstnew(f(lst->content))))
+			{
+				ft_lstclear(&new, del);
+				return (NULL);
+			}
+			ft_lstadd_back(&new, temp);
+			lst = lst->next;
+		}
+		return (new);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (NULL);
 }

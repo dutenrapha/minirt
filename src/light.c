@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/17 23:56:24 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/17 23:57:11 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	light(t_lights **l, t_light light)
 {
-	t_config	config;
-	t_world		w;
+	t_lights	*temp;
 
-	if (ft_prevalidation(argc, argv))
+	if (ft_lstsize_l(*l) == 0)
 	{
-		return (0);
+		*l = ft_lstnew_l(light);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else
 	{
-		return (0);
+		temp = *l;
+		while (temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->next = ft_lstnew_l(light);
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
 }

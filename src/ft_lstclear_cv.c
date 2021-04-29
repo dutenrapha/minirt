@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_cv.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/17 00:56:49 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/17 00:57:04 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	ft_lstclear_cv(t_cv **cv)
 {
-	t_config	config;
-	t_world		w;
+	t_cv	*current;
+	t_cv	*next;
 
-	if (ft_prevalidation(argc, argv))
+	current = *cv;
+	while (current != NULL)
 	{
-		return (0);
+		next = current->next;
+		free(current);
+		current = next;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	*cv = NULL;
 }

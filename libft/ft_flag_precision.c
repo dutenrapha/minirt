@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_flag_precision.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/06/01 11:33:26 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:34:20 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_flag_precision(t_ptf *parms)
 {
-	t_config	config;
-	t_world		w;
-
-	if (ft_prevalidation(argc, argv))
-	{
-		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	if (parms->flag[1] == '*')
+		parms->precision = va_arg(parms->ap, int);
+	else
+		ft_check_precision(parms);
+	ft_set_conversion(parms);
+	ft_putstr_fd(parms->v_str, 1);
 }

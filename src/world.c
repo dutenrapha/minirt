@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/18 19:33:43 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 19:34:15 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	world(t_world *w, t_object content)
 {
-	t_config	config;
-	t_world		w;
+	t_objects	*temp;
 
-	if (ft_prevalidation(argc, argv))
+	w->has_light = false;
+	w->lights = NULL;
+	if (ft_lstsize_w(w->objects) == 0)
 	{
-		return (0);
+		w->objects = ft_lstnew_w(content);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else
 	{
-		return (0);
+		temp = w->objects;
+		while (temp->next)
+		{
+			temp = temp->next;
+		}
+		temp->next = ft_lstnew_w(content);
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	w->num_objects = ft_lstsize_w(w->objects);
 }

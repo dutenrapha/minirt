@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   multicolorS.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/18 00:29:20 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 00:29:24 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_color	multicolor_s(t_color c1, float a)
 {
-	t_config	config;
-	t_world		w;
+	t_color	c;
 
-	if (ft_prevalidation(argc, argv))
-	{
-		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	c.red = c1.red * a;
+	c.green = c1.green * a;
+	c.blue = c1.blue * a;
+	return (c);
 }

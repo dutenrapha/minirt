@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_int_len.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/11 15:51:30 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:34:37 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+int	ft_int_len(intmax_t d)
 {
-	t_config	config;
-	t_world		w;
+	int			int_len;
+	intmax_t	q;
 
-	if (ft_prevalidation(argc, argv))
+	q = d;
+	int_len = 0;
+	while (q != 0)
 	{
-		return (0);
+		q = q / 10;
+		int_len++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (int_len);
 }

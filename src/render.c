@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/18 02:12:48 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 19:42:09 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_canvas	render(t_camera camera, t_world world)
 {
-	t_config	config;
-	t_world		w;
+	t_canvas	image;
+	int			x;
+	int			y;
+	t_ray		ray;
+	t_color		color;
 
-	if (ft_prevalidation(argc, argv))
+	image = canvas(camera.hsize, camera.vsize);
+	y = 0;
+	while (y < camera.vsize - 1)
 	{
-		return (0);
+		x = 0;
+		while (x < camera.hsize - 1)
+		{
+			ray = ray_for_pixel(camera, x, y);
+			color = color_at(world, ray);
+			write_pixel(&image, x, y, color);
+			x++;
+		}
+		y++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (image);
 }

@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   copy_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/14 20:26:13 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 19:40:42 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	copy_matrix(t_matrix *d, t_matrix o)
 {
-	t_config	config;
-	t_world		w;
+	int	i;
+	int	j;
 
-	if (ft_prevalidation(argc, argv))
+	i = 0;
+	while (i < o.dim)
 	{
-		return (0);
+		j = 0;
+		while (j < o.dim)
+		{
+			write_matrix(d, i, j, o.element[i][j]);
+			j++;
+		}
+		i++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
 }

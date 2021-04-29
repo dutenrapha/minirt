@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strDlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/17 02:07:09 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/17 02:07:11 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+int	ft_str_dlen(char **s)
 {
-	t_config	config;
-	t_world		w;
+	int len;
 
-	if (ft_prevalidation(argc, argv))
-	{
+	if (!s)
 		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	len = 0;
+	while (*s++)
 	{
-		return (0);
+		len++;
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (len);
 }

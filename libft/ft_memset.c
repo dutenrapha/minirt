@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:32:25 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:35:01 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memset(void *str, int c, size_t n)
 {
-	t_config	config;
-	t_world		w;
+	size_t			i;
+	unsigned char	*pointer;
 
-	if (ft_prevalidation(argc, argv))
+	pointer = (unsigned char *)str;
+	i = 0;
+	while (i < n)
 	{
-		return (0);
+		*(pointer + i) = (unsigned char)c;
+		i++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (str);
 }

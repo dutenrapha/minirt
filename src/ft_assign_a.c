@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_assign_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/15 21:40:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/19 00:26:12 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	ft_assign_a(t_config *config, char *a_ratio, char *a_color)
 {
-	t_config	config;
-	t_world		w;
+	char	**temp;
+	float	r;
+	float	g;
+	float	b;
+	float	ratio;
 
-	if (ft_prevalidation(argc, argv))
-	{
-		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	ratio = ft_atof(a_ratio);
+	temp = ft_split(a_color, ',');
+	r = (float)ft_atoi(temp[0]);
+	g = (float)ft_atoi(temp[1]);
+	b = (float)ft_atoi(temp[2]);
+	config->a_color =
+	color((r / 255) * ratio, (g / 255) * ratio, (b / 255) * ratio);
+	ft_split_free(&temp);
 }

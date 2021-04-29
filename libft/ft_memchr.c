@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:26:57 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:28:33 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memchr(const void *str, int c, size_t n)
 {
-	t_config	config;
-	t_world		w;
+	int		last;
+	size_t	i;
+	char	*string;
 
-	if (ft_prevalidation(argc, argv))
+	last = 0;
+	i = 0;
+	string = (char *)str;
+	if (*(string) == c && n > 0)
 	{
-		return (0);
+		return ((char*)str);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	while (i < n)
 	{
-		return (0);
+		if (*(string + i) == c)
+		{
+			last = i;
+			break ;
+		}
+		i++;
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	if (last == 0)
+		return (NULL);
+	else
+		return ((char*)str + last);
 }

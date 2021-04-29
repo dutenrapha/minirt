@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_flag_none.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/29 15:54:45 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:34:15 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_flag_none(t_ptf *parms)
 {
-	t_config	config;
-	t_world		w;
-
-	if (ft_prevalidation(argc, argv))
+	if (parms->conversion == '%')
 	{
-		return (0);
+		parms->len += 1;
+		ft_putchar_fd('%', 1);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else
 	{
-		return (0);
+		ft_set_conversion(parms);
+		if (parms->v_char == 1)
+		{
+			ft_putchar_fd('\0', 1);
+		}
+		else
+		{
+			ft_putstr_fd(parms->v_str, 1);
+		}
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	if (parms->conversion == 'c' && parms->v_str[0] == '\0')
+		parms->len += 1;
 }

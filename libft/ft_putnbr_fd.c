@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:34:53 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:36:38 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_config	config;
-	t_world		w;
+	long	number;
 
-	if (ft_prevalidation(argc, argv))
+	number = n;
+	if (number < 0)
 	{
-		return (0);
+		ft_putchar_fd('-', fd);
+		number = number * -1;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	if ((number / 10) > 0)
+		ft_putnbr_fd(number / 10, fd);
+	ft_putchar_fd(number % 10 + 48, fd);
 }

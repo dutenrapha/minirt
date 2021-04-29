@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:56:29 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:57:44 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_config	config;
-	t_world		w;
+	size_t i;
 
-	if (ft_prevalidation(argc, argv))
+	i = 0;
+	while (i < n)
 	{
-		return (0);
+		if (*(s1 + i) < *(s2 + i) || *(s1 + i) > *(s2 + i) ||
+		*(s1 + i) == '\0' || *(s2 + i) == '\0')
+		{
+			return (*(unsigned char *)(s1 + i) - *(unsigned char *)(s2 + i));
+		}
+		i++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
 	return (0);
 }

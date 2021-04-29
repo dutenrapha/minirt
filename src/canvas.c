@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/14 20:09:32 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/14 20:13:00 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_canvas	canvas(int w, int h)
 {
-	t_config	config;
-	t_world		w;
+	t_canvas	c;
+	t_color		black;
+	int			i;
+	int			j;
 
-	if (ft_prevalidation(argc, argv))
+	i = -1;
+	black = color(0, 0, 0);
+	c.width = w;
+	c.height = h;
+	c.pixel = (t_color**)malloc(sizeof(t_color*) * h);
+	while (++i < h)
 	{
-		return (0);
+		c.pixel[i] = (t_color *)malloc(sizeof(t_color) * w);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	i = -1;
+	while (++i < h)
 	{
-		return (0);
+		j = -1;
+		while (++j < w)
+		{
+			c.pixel[i][j] = black;
+		}
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (c);
 }

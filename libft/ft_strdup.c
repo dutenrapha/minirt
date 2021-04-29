@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:43:10 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:36:48 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+char	*ft_strdup(const char *s1)
 {
-	t_config	config;
-	t_world		w;
+	char	*point;
+	int		i;
+	int		len;
 
-	if (ft_prevalidation(argc, argv))
-	{
+	i = 0;
+	len = 0;
+	while (*(s1 + len) != '\0')
+		len++;
+	point = malloc(sizeof(char) * (len + 1));
+	if (point == 0)
 		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	while (*(s1 + i) != '\0')
 	{
-		return (0);
+		*(point + i) = *(s1 + i);
+		i++;
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	*(point + i) = '\0';
+	return (point);
 }

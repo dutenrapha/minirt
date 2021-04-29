@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_countword.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:21:13 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:22:37 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+int	ft_countword(char const *s1, char c)
 {
-	t_config	config;
-	t_world		w;
+	int len;
+	int n;
+	int i;
 
-	if (ft_prevalidation(argc, argv))
+	len = ft_strlen(s1);
+	n = 0;
+	i = -1;
+	while (++i < len + 1)
 	{
-		return (0);
+		if (*(s1 + i) == c || *(s1 + i) == '\0')
+		{
+			if (*(s1 + i - 1) != c)
+			{
+				n++;
+			}
+		}
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (n);
 }

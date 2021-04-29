@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/18 01:24:14 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 01:25:04 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_tuple	normalize(t_tuple v1)
 {
-	t_config	config;
-	t_world		w;
+	float	m;
+	t_tuple	v2;
 
-	if (ft_prevalidation(argc, argv))
+	m = magnitude(v1);
+	if (m > 0)
 	{
-		return (0);
+		v2.x = v1.x / m;
+		v2.y = v1.y / m;
+		v2.z = v1.z / m;
+		v2.w = v1.w / m;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else
 	{
-		return (0);
+		v2.x = 0;
+		v2.y = 0;
+		v2.z = 0;
+		v2.w = 0;
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (v2);
 }

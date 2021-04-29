@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:49:04 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:50:17 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_config	config;
-	t_world		w;
+	size_t j;
+	size_t len_dst;
 
-	if (ft_prevalidation(argc, argv))
+	len_dst = ft_strlen(dst);
+	if (size <= len_dst)
 	{
-		return (0);
+		return (size + ft_strlen((char *)src));
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	j = 0;
+	while (*(src + j) != '\0' && len_dst < size - 1)
 	{
-		return (0);
+		*(dst + len_dst) = *(src + j);
+		len_dst++;
+		j++;
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	*(dst + len_dst) = '\0';
+	return (len_dst + ft_strlen(&src[j]));
 }

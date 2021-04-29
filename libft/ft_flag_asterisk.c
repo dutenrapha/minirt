@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_flag_asterisk.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/05/29 15:59:02 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/07/24 13:34:02 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "ft_printf.h"
 
-int	main(int argc, char *argv[])
+void	ft_flag_asterisk(t_ptf *parms)
 {
-	t_config	config;
-	t_world		w;
-
-	if (ft_prevalidation(argc, argv))
+	parms->v_ast = 1;
+	parms->asterisk = va_arg(parms->ap, int);
+	if (parms->asterisk > 0)
 	{
-		return (0);
+		parms->width = parms->asterisk;
+		ft_flag_width(parms);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else
 	{
-		return (0);
+		parms->width = -1 * parms->asterisk;
+		ft_flag_minus(parms);
 	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
 }

@@ -1,36 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2020/04/27 22:31:10 by rdutenke          #+#    #+#             */
+/*   Updated: 2020/04/27 22:32:18 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	t_config	config;
-	t_world		w;
+	size_t	i;
 
-	if (ft_prevalidation(argc, argv))
+	if ((dst == NULL && src == NULL) || len == 0)
 	{
-		return (0);
+		return (dst);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	if (src < dst)
 	{
-		return (0);
+		i = len;
+		while (i > 0)
+		{
+			i--;
+			*(char *)(dst + i) = *(char *)(src + i);
+		}
 	}
-	if (config.o_objects != NULL)
+	else
 	{
-		ft_init_world(&w, config);
+		i = 0;
+		while (i < len)
+		{
+			*(char *)(dst + i) = *(char *)(src + i);
+			i++;
+		}
 	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (dst);
 }

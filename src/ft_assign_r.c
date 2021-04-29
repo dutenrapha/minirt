@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_assign_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/15 23:58:06 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/19 00:25:35 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+void	ft_assign_r(t_config *config, char *r_x, char *r_y)
 {
-	t_config	config;
-	t_world		w;
+	int		sizex;
+	int		sizey;
+	int		x;
+	int		y;
+	void	*mlx;
 
-	if (ft_prevalidation(argc, argv))
-	{
-		return (0);
-	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	mlx = mlx_init();
+	mlx_get_screen_size(mlx, &sizex, &sizey);
+	x = ft_atoi(r_x);
+	y = ft_atoi(r_y);
+	if (x > sizex)
+		config->r_x = sizex;
+	else
+		config->r_x = x;
+	if (y > sizey)
+		config->r_y = sizey;
+	else
+		config->r_y = y;
 }

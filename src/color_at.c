@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/14 20:20:04 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/14 20:21:57 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_color	color_at(t_world world, t_ray ray)
 {
-	t_config	config;
-	t_world		w;
+	t_list			*inter_world;
+	t_color			c;
+	t_intersection	in;
+	t_comps			comps;
 
-	if (ft_prevalidation(argc, argv))
+	inter_world = intersect_world(world, ray);
+	in = hit(inter_world);
+	if (inter_world != NULL)
 	{
-		return (0);
+		ft_lstclear(&inter_world);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	if (in.valid == false)
 	{
-		return (0);
+		c = color(0, 0, 0);
+		return (c);
 	}
-	if (config.o_objects != NULL)
+	else
 	{
-		ft_init_world(&w, config);
+		comps = prepare_computations(in, ray);
+		c = shade_hit(world, comps);
+		return (c);
 	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
 }

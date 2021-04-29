@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_equal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/17 23:41:51 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/17 23:44:45 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+bool	is_equal(t_tuple v1, t_tuple v2)
 {
-	t_config	config;
-	t_world		w;
-
-	if (ft_prevalidation(argc, argv))
+	if (fabs(v1.x - v2.x) > EPSILON)
 	{
-		return (0);
+		return (false);
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
+	else if (fabs(v1.y - v2.y) > EPSILON)
 	{
-		return (0);
+		return (false);
 	}
-	if (config.o_objects != NULL)
+	else if (fabs(v1.z - v2.z) > EPSILON)
 	{
-		ft_init_world(&w, config);
+		return (false);
 	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	else if (fabs(v1.w - v2.w) > EPSILON)
+	{
+		return (false);
+	}
+	else
+	{
+		return (true);
+	}
 }

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   transpose.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/18 19:29:15 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 19:30:27 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+t_matrix	transpose(t_matrix a)
 {
-	t_config	config;
-	t_world		w;
+	t_matrix	at;
+	int			i;
+	int			j;
 
-	if (ft_prevalidation(argc, argv))
+	at = matrix(4);
+	i = 0;
+	while (i < a.dim)
 	{
-		return (0);
+		j = 0;
+		while (j < a.dim)
+		{
+			at.element[j][i] = a.element[i][j];
+			j++;
+		}
+		i++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (at);
 }

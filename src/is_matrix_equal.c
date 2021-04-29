@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_matrix_equal.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdutenke <rdutenke@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/19 00:49:43 by rdutenke          #+#    #+#             */
-/*   Updated: 2021/04/19 00:49:55 by rdutenke         ###   ########.fr       */
+/*   Created: 2021/04/17 23:50:15 by rdutenke          #+#    #+#             */
+/*   Updated: 2021/04/18 19:46:08 by rdutenke         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/header.h"
+#include "../include/header.h"
 
-int	main(int argc, char *argv[])
+bool	is_matrix_equal(t_matrix a, t_matrix b)
 {
-	t_config	config;
-	t_world		w;
+	int	i;
+	int	j;
 
-	if (ft_prevalidation(argc, argv))
+	i = 0;
+	j = 0;
+	while (i < a.dim)
 	{
-		return (0);
+		while (j < a.dim)
+		{
+			if (fabs(a.element[i][j] - b.element[i][j]) > EPSILON)
+			{
+				return (false);
+			}
+			j++;
+		}
+		i++;
 	}
-	config.save = ft_checksave(argc);
-	if (!ft_readfile(&config, argv))
-	{
-		return (0);
-	}
-	if (config.o_objects != NULL)
-	{
-		ft_init_world(&w, config);
-	}
-	ft_canvas(&config, w);
-	ft_render_camera(config, config.save);
-	return (0);
+	return (true);
 }
