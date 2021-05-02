@@ -54,15 +54,10 @@ static int	expose_hook(t_config *config)
 void	ft_render_camera(t_config config, bool save)
 {
 	config.mlx = mlx_init();
-	config.win = mlx_new_window(config.mlx, config.r_x, config.r_y, "miniRT");
 	if (config.c_cameras == NULL)
-	{
 		ft_printf("Voce nao definiou nenhuma camera!\n");
-	}
 	if (config.o_objects == NULL)
-	{
 		ft_printf("Voce nao definiou nenhum objeto!\n");
-	}
 	ft_set_img(&config);
 	if (save)
 	{
@@ -70,6 +65,7 @@ void	ft_render_camera(t_config config, bool save)
 	}
 	else
 	{
+		config.win = mlx_new_window(config.mlx, config.r_x, config.r_y, "miniRT");
 		mlx_hook(config.win, 33, 1L << 17, closew, &config);
 		mlx_hook(config.win, 2, 1, next_cam, &config);
 		mlx_expose_hook(config.win, expose_hook, &config);
