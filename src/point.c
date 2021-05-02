@@ -14,7 +14,7 @@
 
 t_tuple	point(float x, float y, float z)
 {
-	t_tuple v;
+	t_tuple	v;
 
 	v.x = x;
 	v.y = y;

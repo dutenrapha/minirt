@@ -24,7 +24,7 @@ static bool	ft_axu(char **line_t)
 	return (true);
 }
 
-bool		ft_validate_r(char **line_t)
+bool	ft_validate_r(char **line_t)
 {
 	if (ft_axu(line_t) == false)
 		return (false);

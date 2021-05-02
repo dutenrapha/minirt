@@ -59,7 +59,7 @@ static	t_matrix	ft_cor_normal(t_object *o, char *cor, char *normal)
 	return (a);
 }
 
-void				ft_assign_cy(t_config *config, t_par p)
+void	ft_assign_cy(t_config *config, t_par p)
 {
 	t_object	o;
 	t_matrix	a;

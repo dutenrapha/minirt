@@ -14,7 +14,7 @@
 
 void	cameras(t_cameras **l, t_camera c)
 {
-	t_cameras *temp;
+	t_cameras	*temp;
 
 	if (ft_lstsize_c(*l) == 0)
 	{

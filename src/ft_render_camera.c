@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static int		closew(int keycode, t_config *config)
+static int	closew(int keycode, t_config *config)
 {
 	if (keycode == 0xFF1B)
 	{
@@ -22,7 +22,7 @@ static int		closew(int keycode, t_config *config)
 	return (0);
 }
 
-static int		next_cam(int keycode, t_config *config)
+static int	next_cam(int keycode, t_config *config)
 {
 	if (keycode == 0xFF1B)
 		exit(0);
@@ -32,26 +32,26 @@ static int		next_cam(int keycode, t_config *config)
 	{
 		config->img = config->img->next;
 		mlx_put_image_to_window(
-				config->mlx, config->win, config->img->content.img, 0, 0);
+			config->mlx, config->win, config->img->content.img, 0, 0);
 	}
 	else
 	{
 		config->img = config->img_init;
 		mlx_put_image_to_window(
-				config->mlx, config->win, config->img->content.img, 0, 0);
+			config->mlx, config->win, config->img->content.img, 0, 0);
 	}
 	return (1);
 }
 
-static int		expose_hook(t_config *config)
+static int	expose_hook(t_config *config)
 {
 	return (mlx_put_image_to_window(config->mlx,
-									config->win,
-									config->img->content.img,
-									0, 0));
+			config->win,
+			config->img->content.img,
+			0, 0));
 }
 
-void			ft_render_camera(t_config config, bool save)
+void	ft_render_camera(t_config config, bool save)
 {
 	config.mlx = mlx_init();
 	config.win = mlx_new_window(config.mlx, config.r_x, config.r_y, "miniRT");

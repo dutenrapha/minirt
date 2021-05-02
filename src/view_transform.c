@@ -32,7 +32,7 @@ static	void	f_aux(t_matrix *orientation, t_par9 p)
 	write_matrix(orientation, 3, 3, 1.0);
 }
 
-t_matrix		view_transform(t_tuple from, t_tuple to, t_tuple up)
+t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
 {
 	t_par9		p;
 	t_matrix	orientation;

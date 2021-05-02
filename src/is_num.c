@@ -14,7 +14,7 @@
 
 bool	is_num(char *s)
 {
-	int i;
+	int	i;
 
 	if (!(s[0] == '-' || ft_isdigit(s[0])))
 	{

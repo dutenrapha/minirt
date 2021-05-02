@@ -22,7 +22,7 @@ static void	ft_set(t_par5 p, t_canvas c, t_imgg **img, t_config *config)
 
 	im.img = mlx_new_image(config->mlx, p.xx, p.yy);
 	im.addr = mlx_get_data_addr(im.img, &im.bits_per_pixel, &im.line_length,
-									&im.endian);
+			&im.endian);
 	y = 0;
 	while (y < p.yy - 1)
 	{
@@ -41,7 +41,7 @@ static void	ft_set(t_par5 p, t_canvas c, t_imgg **img, t_config *config)
 	n_img(img, im);
 }
 
-void		ft_set_img(t_config *config)
+void	ft_set_img(t_config *config)
 {
 	t_cv	*temp;
 	t_par5	p;

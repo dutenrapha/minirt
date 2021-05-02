@@ -42,7 +42,7 @@ static void	ft_init(int *i, t_par4 *p, bool *neg)
 
 static int	ft_aux3(char *c, const char *nptr, t_par4 *p, int *i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (*c != '\0')
@@ -61,7 +61,7 @@ static int	ft_aux3(char *c, const char *nptr, t_par4 *p, int *i)
 	return (1);
 }
 
-float		ft_atof(const char *nptr)
+float	ft_atof(const char *nptr)
 {
 	int		i;
 	t_par4	p;

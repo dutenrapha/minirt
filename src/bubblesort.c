@@ -22,7 +22,7 @@ static	t_list	*swap(t_list *ptr1, t_list *ptr2)
 	return (ptr2);
 }
 
-void			bubblesort(t_list **xs)
+void	bubblesort(t_list **xs)
 {
 	t_list	**temp;
 	t_list	*p1;

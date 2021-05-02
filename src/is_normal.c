@@ -21,7 +21,7 @@ static bool	is_unit(float x, float y, float z)
 	return (false);
 }
 
-bool		is_normal(char *s)
+bool	is_normal(char *s)
 {
 	char	**temp;
 	t_tuple	t;

@@ -31,7 +31,7 @@ static t_tuple	cyl_norm(t_object cyl, t_tuple point)
 	}
 }
 
-t_tuple			local_normal_at(t_object o, t_tuple local_point)
+t_tuple	local_normal_at(t_object o, t_tuple local_point)
 {
 	t_tuple		local_normal;
 
@@ -40,7 +40,7 @@ t_tuple			local_normal_at(t_object o, t_tuple local_point)
 		local_normal = sub(local_point, point(0, 0, 0));
 	}
 	else if (ft_memcmp(o.type, "plan", 5) == 0
-	|| ft_memcmp(o.type, "square", 7) == 0)
+		|| ft_memcmp(o.type, "square", 7) == 0)
 	{
 		local_normal = vector(0, 1, 0);
 	}

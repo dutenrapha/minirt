@@ -14,7 +14,7 @@
 
 void	cv(t_cv **l, t_canvas cv)
 {
-	t_cv *temp;
+	t_cv	*temp;
 
 	if (ft_lstsize_cv(*l) == 0)
 	{

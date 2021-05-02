@@ -25,7 +25,7 @@ static void	ft_aux(t_list **xs, t_list *init)
 	}
 }
 
-t_list		*intersect_world(t_world w, t_ray r)
+t_list	*intersect_world(t_world w, t_ray r)
 {
 	t_list		*xs;
 	t_list		*init;

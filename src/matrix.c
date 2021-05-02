@@ -18,7 +18,7 @@ t_matrix	matrix(int dim)
 	int			i;
 
 	m.dim = dim;
-	m.element = (float **)malloc(sizeof(float*) * dim);
+	m.element = (float **)malloc(sizeof(float *) * dim);
 	i = 0;
 	while (i < dim)
 	{

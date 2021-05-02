@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static	void	ft_int(t_config *config)
+static	void	ft_int(t_config *config, t_par19 *p)
 {
 	config->c_cameras = NULL;
 	config->l_lights = NULL;
@@ -20,6 +20,7 @@ static	void	ft_int(t_config *config)
 	config->c_canvas = NULL;
 	config->img = NULL;
 	config->img_init = NULL;
+	p->line = NULL;
 }
 
 static	bool	ft_aux(char *line, t_config *config)
@@ -34,30 +35,31 @@ static	bool	ft_aux(char *line, t_config *config)
 	return (true);
 }
 
-bool			ft_readfile(t_config *config, char *argv[])
+bool	ft_readfile(t_config *config, char *argv[])
 {
-	int		fd;
-	int		ii;
-	char	*line;
+	t_par19	p;
 
-	line = NULL;
-	ft_int(config);
-	if (!(fd = open(argv[1], O_RDONLY)))
+	ft_int(config, &p);
+	p.fd = open(argv[1], O_RDONLY);
+	if (!p.fd)
 	{
+		ft_printf("aa");
 		ft_printf("%s\n", ft_error("000"));
 		exit(0);
 	}
-	while ((ii = get_next_line(fd, &line)) > 0)
+	p.ii = get_next_line(p.fd, &p.line);
+	while (p.ii > 0)
 	{
-		if (line != NULL && *line != '\0' && *line != '#')
+		if (p.line != NULL && *p.line != '\0' && *p.line != '#')
 		{
-			if (!is_valid(line))
+			if (!is_valid(p.line))
 				return (false);
-			ft_conf(&config, line);
-			free(line);
+			ft_conf(&config, p.line);
+			free(p.line);
 		}
+		p.ii = get_next_line(p.fd, &p.line);
 	}
-	if (!ft_aux(line, config))
+	if (!ft_aux(p.line, config))
 		return (false);
 	return (true);
 }

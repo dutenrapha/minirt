@@ -38,7 +38,7 @@ static void	ft_aux(t_config *config, char *line)
 	}
 }
 
-void		ft_conf(t_config **config, char *line)
+void	ft_conf(t_config **config, char *line)
 {
 	char	**line_t;
 	t_par	p;

@@ -21,7 +21,7 @@ float	det(t_matrix a)
 	if (a.dim == 2)
 	{
 		resp = a.element[0][0] * a.element[1][1]
-		- a.element[0][1] * a.element[1][0];
+			- a.element[0][1] * a.element[1][0];
 	}
 	else
 	{

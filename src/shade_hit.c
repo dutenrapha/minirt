@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static void		ft_init(t_par10 *i, t_world world, t_comps comps, t_light c)
+static void	ft_init(t_par10 *i, t_world world, t_comps comps, t_light c)
 {
 	i->a = world.ambient;
 	i->material = comps.object.material;
@@ -22,7 +22,7 @@ static void		ft_init(t_par10 *i, t_world world, t_comps comps, t_light c)
 	i->normalv = comps.normalv;
 }
 
-static void		ft_init2(t_par10 *i, bool shadowed)
+static void	ft_init2(t_par10 *i, bool shadowed)
 {
 	i->in_shadow = shadowed;
 }
@@ -39,13 +39,13 @@ static t_color	ft_aux(t_light l, t_par10 *i, t_color c2, t_par13 p)
 	return (c2);
 }
 
-static void		ft_init3(t_par13 *p, t_world world, t_comps comps)
+static void	ft_init3(t_par13 *p, t_world world, t_comps comps)
 {
 	p->world = world;
 	p->comps = comps;
 }
 
-t_color			shade_hit(t_world world, t_comps comps)
+t_color	shade_hit(t_world world, t_comps comps)
 {
 	t_lights	*temp;
 	t_par13		p;

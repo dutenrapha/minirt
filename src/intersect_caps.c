@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static bool		check_cap(t_ray ray, float t)
+static bool	check_cap(t_ray ray, float t)
 {
 	bool	r;
 	float	x;
@@ -28,7 +28,7 @@ static bool		check_cap(t_ray ray, float t)
 	return (r);
 }
 
-t_list			*intersect_caps(t_object cyl, t_ray ray)
+t_list	*intersect_caps(t_object cyl, t_ray ray)
 {
 	t_intersection	i1;
 	t_list			*xs;

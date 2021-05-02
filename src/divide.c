@@ -14,7 +14,7 @@
 
 t_tuple	divide(t_tuple v1, float a)
 {
-	t_tuple v2;
+	t_tuple	v2;
 
 	v2.x = v1.x / a;
 	v2.y = v1.y / a;

@@ -16,7 +16,8 @@ t_imgg	*ft_lstnew_img(t_data img)
 {
 	t_imgg	*new;
 
-	if (!(new = (t_imgg *)malloc(sizeof(t_imgg))))
+	new = (t_imgg *)malloc(sizeof(t_imgg));
+	if (!new)
 		return (NULL);
 	if (new)
 		new->content = img;

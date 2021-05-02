@@ -40,7 +40,7 @@ static t_list	*ft_aux2(t_par18 *c)
 	return (c->xs_cap);
 }
 
-t_list			*intersect_cylinder(t_object cyl, t_ray ray)
+t_list	*intersect_cylinder(t_object cyl, t_ray ray)
 {
 	t_par17	p;
 	t_par18	c;

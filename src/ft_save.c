@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static void		init_bmpheader(int fd, t_bmpheader header)
+static void	init_bmpheader(int fd, t_bmpheader header)
 {
 	write(fd, &header.type, 2);
 	write(fd, &header.size, 4);
@@ -31,7 +31,7 @@ static void		init_bmpheader(int fd, t_bmpheader header)
 	write(fd, &header.important_colors, 4);
 }
 
-static void		create_header(t_config config, t_bmpheader *header)
+static void	create_header(t_config config, t_bmpheader *header)
 {
 	header->type = 0x4D42;
 	header->size = ((config.r_x + config.r_y) * 4) + 54;
@@ -50,7 +50,7 @@ static void		create_header(t_config config, t_bmpheader *header)
 	header->important_colors = 0;
 }
 
-static	int		create_file(char *name)
+static	int	create_file(char *name)
 {
 	int		fd;
 	char	*filename;
@@ -61,7 +61,7 @@ static	int		create_file(char *name)
 	return (fd);
 }
 
-static void		ft_saves(t_config config, t_data mlx, int tag)
+static void	ft_saves(t_config config, t_data mlx, int tag)
 {
 	char		*name;
 	t_bmpheader	header;
@@ -81,7 +81,7 @@ static void		ft_saves(t_config config, t_data mlx, int tag)
 	free(name);
 }
 
-void			ft_save(t_config configs)
+void	ft_save(t_config configs)
 {
 	int		tag;
 	t_imgg	*temp;

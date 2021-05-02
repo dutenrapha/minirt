@@ -48,7 +48,7 @@ static t_list	*intersect_square(t_object p, t_ray ray)
 		point = sub(add(ray.origin, multi(ray.direction, t)), p.center);
 		border = p.side * 0.5;
 		if ((fabs(point.x) <= border) && (fabs(point.y)
-		<= border) && (fabs(point.z) <= border))
+				<= border) && (fabs(point.z) <= border))
 		{
 			i1 = intersection(t, p);
 			xs = ft_lstnew(i1);
@@ -80,7 +80,7 @@ static t_list	*ft_aux(t_object s, t_ray ray)
 	return (xs);
 }
 
-t_list			*intersect(t_object s, t_ray ray)
+t_list	*intersect(t_object s, t_ray ray)
 {
 	t_list		*xs;
 	t_ray		local_ray;

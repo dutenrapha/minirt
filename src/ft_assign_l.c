@@ -30,7 +30,7 @@ void	ft_assign_l(t_config *config, char *ps, char *bb, char *cor)
 	c.green = (float)ft_atoi(temp2[1]);
 	c.blue = (float)ft_atoi(temp2[2]);
 	light(&config->l_lights, point_light(point(p.x, p.y, p.z),
-	color((c.red / 255) * b, (c.green / 255) * b, (c.blue / 255) * b)));
+			color((c.red / 255) * b, (c.green / 255) * b, (c.blue / 255) * b)));
 	ft_split_free(&temp);
 	ft_split_free(&temp2);
 }

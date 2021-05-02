@@ -32,8 +32,8 @@ void	ft_assign_c(t_config *config, char *ps, char *n, char *fov)
 	p2.z = ft_atof(temp[2]);
 	ft_split_free(&temp);
 	cc = view_transform(point(p1.x, p1.y, p1.z),
-	point(p2.x, p2.y, p2.z),
-	vector(0, 1, 0));
+			point(p2.x, p2.y, p2.z),
+			vector(0, 1, 0));
 	copy_matrix(&c.transform, cc);
 	cameras(&config->c_cameras, c);
 	free_matrix(&cc);

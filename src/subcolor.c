@@ -14,7 +14,7 @@
 
 t_color	subcolor(t_color c1, t_color c2)
 {
-	t_color c;
+	t_color	c;
 
 	c.red = c1.red - c2.red;
 	c.green = c1.green - c2.green;

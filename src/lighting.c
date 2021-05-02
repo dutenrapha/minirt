@@ -25,8 +25,7 @@ static void	ft_int(t_par11 *q, t_par10 p, float *light_dot_normal)
 static void	ft_aux(t_par11 *q, t_par10 *p, float *light_dot_normal, t_par12 *y)
 {
 	q->diffuse = multicolor_s(q->effective_color,
-	p->material.diffuse *
-	*light_dot_normal);
+			p->material.diffuse * *light_dot_normal);
 	q->reflectv = reflect(multi(q->lightv, -1), p->normalv);
 	y->reflect_dot_eye = dot(q->reflectv, p->eyev);
 	if (y->reflect_dot_eye <= 0)
@@ -37,15 +36,15 @@ static void	ft_aux(t_par11 *q, t_par10 *p, float *light_dot_normal, t_par12 *y)
 	{
 		y->factor = pow(y->reflect_dot_eye, p->material.shininess);
 		q->specular = multicolor_s(p->light.intensity,
-		p->material.specular * y->factor);
+				p->material.specular * y->factor);
 	}
 }
 
-t_color		lighting(t_par10 p)
+t_color	lighting(t_par10 p)
 {
-	t_par11 q;
+	t_par11	q;
 	float	light_dot_normal;
-	t_par12 y;
+	t_par12	y;
 
 	ft_int(&q, p, &light_dot_normal);
 	if (light_dot_normal < 0)

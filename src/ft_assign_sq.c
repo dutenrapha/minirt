@@ -52,7 +52,7 @@ static t_tuple	ft_normal(t_object *o, char *normal)
 	return (p);
 }
 
-void			ft_assign_sq(t_config *config, char *ps, char *n, t_par2 p)
+void	ft_assign_sq(t_config *config, char *ps, char *n, t_par2 p)
 {
 	t_object	o;
 	t_matrix	c;

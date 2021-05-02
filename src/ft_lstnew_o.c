@@ -16,7 +16,8 @@ t_objects	*ft_lstnew_o(t_object content)
 {
 	t_objects	*new;
 
-	if (!(new = (t_objects *)malloc(sizeof(t_objects))))
+	new = (t_objects *)malloc(sizeof(t_objects));
+	if (!new)
 		return (NULL);
 	if (new)
 		new->content = content;

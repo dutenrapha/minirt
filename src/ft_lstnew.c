@@ -16,7 +16,8 @@ t_list	*ft_lstnew(t_intersection content)
 {
 	t_list	*new;
 
-	if (!(new = (t_list *)malloc(sizeof(t_list))))
+	new = (t_list *)malloc(sizeof(t_list));
+	if (!new)
 		return (NULL);
 	if (new)
 		new->content = content;

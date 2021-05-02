@@ -14,7 +14,7 @@
 
 t_object	sphere(void)
 {
-	t_object p;
+	t_object	p;
 
 	p.id = 3;
 	p.type = "sphere";

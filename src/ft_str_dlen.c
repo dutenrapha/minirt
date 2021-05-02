@@ -14,7 +14,7 @@
 
 int	ft_str_dlen(char **s)
 {
-	int len;
+	int	len;
 
 	if (!s)
 		return (0);

@@ -25,7 +25,7 @@ void	ft_assign_a(t_config *config, char *a_ratio, char *a_color)
 	r = (float)ft_atoi(temp[0]);
 	g = (float)ft_atoi(temp[1]);
 	b = (float)ft_atoi(temp[2]);
-	config->a_color =
-	color((r / 255) * ratio, (g / 255) * ratio, (b / 255) * ratio);
+	config->a_color = color((r / 255) * ratio, (g / 255)
+			* ratio, (b / 255) * ratio);
 	ft_split_free(&temp);
 }

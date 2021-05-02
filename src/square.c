@@ -14,7 +14,7 @@
 
 t_object	square(void)
 {
-	t_object p;
+	t_object	p;
 
 	p.id = 4;
 	p.type = "square";

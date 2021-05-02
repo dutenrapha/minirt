@@ -16,7 +16,8 @@ t_cameras	*ft_lstnew_c(t_camera content)
 {
 	t_cameras	*new;
 
-	if (!(new = (t_cameras *)malloc(sizeof(t_cameras))))
+	new = (t_cameras *)malloc(sizeof(t_cameras));
+	if (!new)
 		return (NULL);
 	if (new)
 		new->content = content;

@@ -26,9 +26,9 @@ t_matrix	matrix_multi(t_matrix a, t_matrix b)
 		j = 0;
 		while (j < a.dim)
 		{
-			ab.element[i][j] = a.element[i][0] * b.element[0][j] +
-			a.element[i][1] * b.element[1][j] + a.element[i][2] *
-			b.element[2][j] + a.element[i][3] * b.element[3][j];
+			ab.element[i][j] = a.element[i][0] * b.element[0][j]
+				+ a.element[i][1] * b.element[1][j] + a.element[i][2]
+				* b.element[2][j] + a.element[i][3] * b.element[3][j];
 			j++;
 		}
 		i++;

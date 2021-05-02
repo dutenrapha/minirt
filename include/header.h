@@ -22,7 +22,7 @@
 # include "../lib/mlx_linux/mlx_int.h"
 # include "../libft/libft.h"
 
-typedef struct			s_bmpheader
+typedef struct s_bmpheader
 {
 	uint16_t			type;
 	uint32_t			size;
@@ -41,7 +41,7 @@ typedef struct			s_bmpheader
 	uint32_t			important_colors;
 }						t_bmpheader;
 
-typedef struct			s_tuple
+typedef struct s_tuple
 {
 	float				x;
 	float				y;
@@ -49,45 +49,45 @@ typedef struct			s_tuple
 	float				w;
 }						t_tuple;
 
-typedef struct			s_projectile
+typedef struct s_projectile
 {
 	t_tuple				position;
 	t_tuple				velocity;
 }						t_projectile;
 
-typedef struct			s_enviroment
+typedef struct s_enviroment
 {
 	t_tuple				gravity;
 	t_tuple				wind;
 }						t_enviroment;
 
-typedef struct			s_color
+typedef struct s_color
 {
 	float				red;
 	float				green;
 	float				blue;
 }						t_color;
 
-typedef struct			s_canvas
+typedef struct s_canvas
 {
 	int					width;
 	int					height;
 	t_color				**pixel;
 }						t_canvas;
 
-typedef struct			s_matrix
+typedef struct s_matrix
 {
 	float				**element;
 	int					dim;
 }						t_matrix;
 
-typedef struct			s_ray
+typedef struct s_ray
 {
 	t_tuple				origin;
 	t_tuple				direction;
 }						t_ray;
 
-typedef struct			s_material
+typedef struct s_material
 {
 	t_color				color;
 	float				ambient;
@@ -96,7 +96,7 @@ typedef struct			s_material
 	float				shininess;
 }						t_material;
 
-typedef struct			s_object
+typedef struct s_object
 {
 	int					id;
 	char				*type;
@@ -115,14 +115,14 @@ typedef struct			s_object
 	t_tuple				normal;
 }						t_object;
 
-typedef struct			s_intersection
+typedef struct s_intersection
 {
 	float				t;
 	t_object			object;
 	bool				valid;
 }						t_intersection;
 
-typedef struct			s_comps
+typedef struct s_comps
 {
 	float				t;
 	t_object			object;
@@ -133,7 +133,7 @@ typedef struct			s_comps
 	t_tuple				over_point;
 }						t_comps;
 
-typedef struct			s_camera
+typedef struct s_camera
 {
 	int					hsize;
 	int					vsize;
@@ -144,50 +144,50 @@ typedef struct			s_camera
 	float				pixel_size;
 }						t_camera;
 
-typedef struct			s_shape
+typedef struct s_shape
 {
 	t_matrix			transform;
 	t_material			material;
 	t_ray				saved_ray;
 }						t_shape;
 
-typedef struct			s_list
+typedef struct s_list
 {
 	t_intersection		content;
 	struct s_list		*next;
 }						t_list;
 
-typedef struct			s_objects
+typedef struct s_objects
 {
 	t_object			content;
 	struct s_objects	*next;
 }						t_objects;
 
-typedef struct			s_light
+typedef struct s_light
 {
 	t_tuple				position;
 	t_color				intensity;
 }						t_light;
 
-typedef struct			s_lights
+typedef struct s_lights
 {
 	t_light				content;
 	struct s_lights		*next;
 }						t_lights;
 
-typedef struct			s_cameras
+typedef struct s_cameras
 {
 	t_camera			content;
 	struct s_cameras	*next;
 }						t_cameras;
 
-typedef struct			s_cv
+typedef struct s_cv
 {
 	t_canvas			content;
 	struct s_cv			*next;
 }						t_cv;
 
-typedef struct			s_world
+typedef struct s_world
 {
 	t_lights			*lights;
 	t_objects			*objects;
@@ -196,7 +196,7 @@ typedef struct			s_world
 	int					num_objects;
 }						t_world;
 
-typedef struct			s_data
+typedef struct s_data
 {
 	void				*img;
 	char				*addr;
@@ -205,13 +205,13 @@ typedef struct			s_data
 	int					endian;
 }						t_data;
 
-typedef struct			s_imgg
+typedef struct s_imgg
 {
 	t_data				content;
 	struct s_imgg		*next;
 }						t_imgg;
 
-typedef struct			s_config
+typedef struct s_config
 {
 	int					r_x;
 	int					r_y;
@@ -227,7 +227,7 @@ typedef struct			s_config
 	void				*win;
 }						t_config;
 
-typedef struct			s_iter
+typedef struct s_iter
 {
 	int					i;
 	int					j;
@@ -235,7 +235,7 @@ typedef struct			s_iter
 	int					n;
 }						t_iter;
 
-typedef struct			s_par
+typedef struct s_par
 {
 	char				*position;
 	char				*normal;
@@ -244,44 +244,44 @@ typedef struct			s_par
 	char				*cor;
 }						t_par;
 
-typedef struct			s_par2
+typedef struct s_par2
 {
 	char				*size;
 	char				*cor;
 }						t_par2;
 
-typedef struct			s_par3
+typedef struct s_par3
 {
 	char				*p1;
 	char				*p2;
 	char				*p3;
 }						t_par3;
 
-typedef struct			s_par4
+typedef struct s_par4
 {
 	double				val;
 	int					flag;
 }						t_par4;
 
-typedef struct			s_par5
+typedef struct s_par5
 {
 	int					yy;
 	int					xx;
 }						t_par5;
 
-typedef struct			s_par6
+typedef struct s_par6
 {
 	int					i;
 	int					j;
 }						t_par6;
 
-typedef struct			s_par7
+typedef struct s_par7
 {
 	float				distance;
 	t_tuple				direction;
 }						t_par7;
 
-typedef struct			s_par8
+typedef struct s_par8
 {
 	t_ray				r;
 	float				xoffset;
@@ -290,7 +290,7 @@ typedef struct			s_par8
 	float				world_y;
 }						t_par8;
 
-typedef struct			s_par9
+typedef struct s_par9
 {
 	t_tuple				forward;
 	t_tuple				upn;
@@ -298,7 +298,7 @@ typedef struct			s_par9
 	t_tuple				true_up;
 }						t_par9;
 
-typedef struct			s_par10
+typedef struct s_par10
 {
 	t_color				a;
 	t_material			material;
@@ -309,7 +309,7 @@ typedef struct			s_par10
 	bool				in_shadow;
 }						t_par10;
 
-typedef struct			s_par11
+typedef struct s_par11
 {
 	t_color				ambient;
 	t_color				diffuse;
@@ -320,26 +320,26 @@ typedef struct			s_par11
 	t_tuple				reflectv;
 }						t_par11;
 
-typedef struct			s_par12
+typedef struct s_par12
 {
 	float				reflect_dot_eye;
 	float				factor;
 }						t_par12;
 
-typedef struct			s_par13
+typedef struct s_par13
 {
 	t_world				world;
 	t_comps				comps;
 	bool				shadowed;
 }						t_par13;
 
-typedef struct			s_par14
+typedef struct s_par14
 {
 	t_color				c1;
 	t_color				c2;
 }						t_par14;
 
-typedef struct			s_par15
+typedef struct s_par15
 {
 	t_intersection		i1;
 	t_intersection		i2;
@@ -349,7 +349,7 @@ typedef struct			s_par15
 	t_matrix			inv;
 }						t_par15;
 
-typedef struct			s_par16
+typedef struct s_par16
 {
 	t_intersection		i1;
 	float				det;
@@ -359,7 +359,7 @@ typedef struct			s_par16
 	float				t;
 }						t_par16;
 
-typedef struct			s_par17
+typedef struct s_par17
 {
 	float				a;
 	float				b;
@@ -374,14 +374,21 @@ typedef struct			s_par17
 	int					cc;
 }						t_par17;
 
-typedef struct			s_par18
+typedef struct s_par18
 {
 	t_list				*xs;
 	t_list				*xs_cap;
 }						t_par18;
 
-t_list					*ft_aux_cy(t_par17 p,
-t_ray ray, t_par18 *c, t_object cyl);
+typedef struct s_par19
+{
+	int		fd;
+	int		ii;
+	char	*line;
+}						t_par19;
+
+t_list					*ft_aux_cy(t_par17 p, t_ray ray,
+							t_par18 *c, t_object cyl);
 t_list					*intersect_cylinder(t_object cyl, t_ray ray);
 t_list					*intersect_triangle(t_object triangle, t_ray ray);
 t_list					*intersect_sphere(t_object s, t_ray ray);
@@ -427,22 +434,22 @@ t_object				square(void);
 void					light_a(t_world *w, t_light light);
 float					ft_atof(const char *nptr);
 t_matrix				view_transform(t_tuple from,
-t_tuple forward, t_tuple up);
+							t_tuple forward, t_tuple up);
 char					*ft_error(char *error);
 void					ft_conf(t_config **config, char *line);
 void					ft_assign_r(t_config *config, char *r_x, char *r_y);
 void					ft_assign_a(t_config *config,
-char *a_ratio, char *a_light);
+							char *a_ratio, char *a_light);
 void					ft_assign_l(t_config *config,
-char *ps, char *bb, char *cor);
+							char *ps, char *bb, char *cor);
 void					ft_assign_c(t_config *config,
-char *ps, char *n, char *fov);
+							char *ps, char *n, char *fov);
 void					ft_assign_pl(t_config *config,
-char *ps, char *n, char *cor);
+							char *ps, char *n, char *cor);
 void					ft_assign_sp(t_config *config,
-char *p, char *d, char *cor);
+							char *p, char *d, char *cor);
 void					ft_assign_sq(t_config *config,
-char *ps, char *n, t_par2 p);
+							char *ps, char *n, t_par2 p);
 void					ft_assign_cy(t_config *config, t_par p);
 void					ft_assign_tr(t_config *config, t_par3 po, char *cor);
 t_objects				*ft_lstnew_o(t_object content);
@@ -473,7 +480,7 @@ int						ft_lstsize_l(t_lights *lst);
 void					ft_lstclear_l(t_lights **lst);
 void					light(t_lights **l, t_light light);
 bool					is_shadowed(t_light light,
-t_world world, t_tuple point);
+							t_world world, t_tuple point);
 t_tuple					point(float x, float y, float z);
 t_tuple					vector(float x, float y, float z);
 bool					is_equal(t_tuple v1, t_tuple v2);
@@ -537,7 +544,7 @@ t_tuple					local_normal_at(t_object o, t_tuple local_point);
 t_object				plan(void);
 t_object				cube(int id);
 void					check_axis(float origin,
-float d, float *tmin, float *tmax);
+							float d, float *tmin, float *tmax);
 t_object				cylinder(void);
 t_object				triangle(int id, t_tuple p1, t_tuple p2, t_tuple p3);
 void					ft_split_free(char ***split);

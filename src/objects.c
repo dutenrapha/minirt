@@ -14,7 +14,7 @@
 
 void	objects(t_objects **l, t_object o)
 {
-	t_objects *temp;
+	t_objects	*temp;
 
 	if (ft_lstsize_o(*l) == 0)
 	{

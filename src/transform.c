@@ -14,7 +14,7 @@
 
 t_ray	transform(t_ray r, t_matrix m)
 {
-	t_ray resp;
+	t_ray	resp;
 
 	resp.origin = matrix_multi_vec(m, r.origin);
 	resp.direction = matrix_multi_vec(m, r.direction);

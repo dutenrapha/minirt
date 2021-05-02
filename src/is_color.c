@@ -32,7 +32,7 @@ bool	is_color(char *s)
 	cc.green = (float)ft_atoi(temp[1]);
 	cc.blue = (float)ft_atoi(temp[2]);
 	if (cc.red < 0 || cc.red > 255 || cc.green < 0 || cc.green > 255
-	|| cc.blue < 0 || cc.blue > 255)
+		|| cc.blue < 0 || cc.blue > 255)
 	{
 		ft_split_free(&temp);
 		return (false);

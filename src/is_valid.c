@@ -27,7 +27,7 @@ static bool	ft_aux(char **line_t)
 	return (resp);
 }
 
-bool		is_valid(char *line)
+bool	is_valid(char *line)
 {
 	char	**line_t;
 	bool	resp;

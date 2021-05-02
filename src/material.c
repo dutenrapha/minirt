@@ -14,7 +14,7 @@
 
 t_material	material(void)
 {
-	t_material m;
+	t_material	m;
 
 	m.color = color(1, 1, 1);
 	m.ambient = 0.1;

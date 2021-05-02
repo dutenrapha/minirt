@@ -20,9 +20,8 @@ bool	ft_validate_a(char **line_t)
 		ft_printf("o identificador A, o tamanho de x e o tamanho de y\n");
 		return (false);
 	}
-	if (!ft_isdigit(*line_t[1]) ||
-	ft_atof(line_t[1]) < 0 ||
-	ft_atof(line_t[1]) > 1)
+	if (!ft_isdigit(*line_t[1]) || ft_atof(line_t[1])
+		 < 0 || ft_atof(line_t[1]) > 1)
 	{
 		ft_printf("Error\nO valor de lighting ratio, da luz ambiente, ");
 		ft_printf("de ser um numero ");

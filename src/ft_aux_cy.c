@@ -50,13 +50,13 @@ static void	ft_aux(t_par17 p, t_ray ray, t_par18 *c, t_object cyl)
 	ft_aux1(p, c, cyl);
 }
 
-t_list		*ft_aux_cy(t_par17 p, t_ray ray, t_par18 *c, t_object cyl)
+t_list	*ft_aux_cy(t_par17 p, t_ray ray, t_par18 *c, t_object cyl)
 {
 	t_list	*ret;
 
 	ret = NULL;
 	p.b = 2 * ray.origin.x * ray.direction.x
-	+ 2 * ray.origin.z * ray.direction.z;
+		+ 2 * ray.origin.z * ray.direction.z;
 	p.c = ray.origin.x * ray.origin.x + ray.origin.z * ray.origin.z - 1;
 	p.discriminant = p.b * p.b - 4 * p.a * p.c;
 	if (p.discriminant < 0)

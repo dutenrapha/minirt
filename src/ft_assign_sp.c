@@ -12,7 +12,7 @@
 
 #include "../include/header.h"
 
-static void		ft_cor(t_object *o, char *cor)
+static void	ft_cor(t_object *o, char *cor)
 {
 	char	**temp;
 	t_color	cc;
@@ -48,7 +48,7 @@ static t_matrix	ft_posi(char *position, float r)
 	return (c);
 }
 
-void			ft_assign_sp(t_config *config, char *p, char *d, char *cor)
+void	ft_assign_sp(t_config *config, char *p, char *d, char *cor)
 {
 	t_object	o;
 	t_matrix	c;

@@ -16,7 +16,8 @@ t_lights	*ft_lstnew_l(t_light content)
 {
 	t_lights	*new;
 
-	if (!(new = (t_lights *)malloc(sizeof(t_lights))))
+	new = (t_lights *)malloc(sizeof(t_lights));
+	if (!new)
 		return (NULL);
 	if (new)
 		new->content = content;

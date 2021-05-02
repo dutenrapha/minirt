@@ -26,7 +26,7 @@ static bool	ft_aux(int argc)
 	return (false);
 }
 
-bool		ft_prevalidation(int argc, char *argv[])
+bool	ft_prevalidation(int argc, char *argv[])
 {
 	char		*erro;
 

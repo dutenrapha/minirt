@@ -14,7 +14,7 @@
 
 t_matrix	rotation_x(float r)
 {
-	t_matrix a;
+	t_matrix	a;
 
 	a = matrix(4);
 	write_matrix(&a, 0, 0, 1.0);

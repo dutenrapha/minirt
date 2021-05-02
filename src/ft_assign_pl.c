@@ -50,7 +50,7 @@ static t_matrix	ft_normal(char *normal)
 	return (a);
 }
 
-void			ft_assign_pl(t_config *config, char *ps, char *n, char *cor)
+void	ft_assign_pl(t_config *config, char *ps, char *n, char *cor)
 {
 	t_object	o;
 	t_matrix	a;

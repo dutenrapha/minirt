@@ -36,12 +36,12 @@ static t_object	ft_points(char *p1, char *p2, char *p3)
 	x3.z = ft_atof(temp[2]);
 	ft_split_free(&temp);
 	o = triangle(5, point(x1.x, x1.y, x1.z),
-	point(x2.x, x2.y, x2.z),
-	point(x3.x, x3.y, x3.z));
+			point(x2.x, x2.y, x2.z),
+			point(x3.x, x3.y, x3.z));
 	return (o);
 }
 
-void			ft_assign_tr(t_config *config, t_par3 po, char *cor)
+void	ft_assign_tr(t_config *config, t_par3 po, char *cor)
 {
 	t_object	o;
 	t_color		cc;

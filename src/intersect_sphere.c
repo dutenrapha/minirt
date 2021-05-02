@@ -21,7 +21,7 @@ static void	ft_aux(t_par15 *p, t_ray ray_t, t_object s)
 	p->discriminant = p->p.y * p->p.y - 4 * p->p.x * p->p.z;
 }
 
-t_list		*intersect_sphere(t_object s, t_ray ray)
+t_list	*intersect_sphere(t_object s, t_ray ray)
 {
 	t_list	*xs;
 	t_list	*ii;
