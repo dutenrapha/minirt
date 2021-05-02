@@ -19,6 +19,8 @@ bool	is_rt_file(char *file)
 
 	resp = false;
 	temp = ft_strchr(file, '.');
+	if (temp == NULL)
+		return (resp);
 	if (ft_memcmp(".rt", temp, 4) == 0)
 	{
 		resp = true;
