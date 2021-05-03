@@ -14,7 +14,7 @@
 
 char	ft_shift(unsigned int i, char s)
 {
-	char shift;
+	char	shift;
 
 	shift = s + i;
 	return (shift);

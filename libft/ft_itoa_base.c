@@ -12,6 +12,12 @@
 
 #include "ft_printf.h"
 
+static void	ft_aux(char *base, uintmax_t *base_len, int *cont_num)
+{
+	*base_len = ft_strlen(base);
+	*cont_num = 1;
+}
+
 char	*ft_itoa_base(uintmax_t nb, char *base)
 {
 	int			cont_num;
@@ -19,12 +25,13 @@ char	*ft_itoa_base(uintmax_t nb, char *base)
 	uintmax_t	aux;
 	char		*str;
 
-	base_len = ft_strlen(base);
-	cont_num = 1;
-	aux = nb;
-	str = NULL;
-	while ((aux = aux / base_len) > 0)
+	ft_aux(base, &base_len, &cont_num);
+	aux = nb / base_len;
+	while (aux > 0)
+	{
 		cont_num++;
+		aux = aux / base_len;
+	}
 	str = (char *)ft_calloc((cont_num + 1), sizeof(char));
 	if (!str)
 		return (NULL);

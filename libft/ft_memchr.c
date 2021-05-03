@@ -23,7 +23,7 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	string = (char *)str;
 	if (*(string) == c && n > 0)
 	{
-		return ((char*)str);
+		return ((char *)str);
 	}
 	while (i < n)
 	{
@@ -37,5 +37,5 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	if (last == 0)
 		return (NULL);
 	else
-		return ((char*)str + last);
+		return ((char *)str + last);
 }

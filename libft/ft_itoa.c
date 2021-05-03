@@ -50,7 +50,7 @@ static	void	ft_aux(t_pf *params)
 	params->passo = 0;
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	t_pf	itoa_p;
 
@@ -58,20 +58,17 @@ char			*ft_itoa(int n)
 	if (itoa_p.i == 0)
 	{
 		itoa_p.i += 1;
-		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char))))
-			return (0);
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
 		*itoa_p.itoa = 48;
 	}
 	if (itoa_p.n_orig < 0)
 	{
-		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char))))
-			return (0);
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 2, sizeof(char));
 		ft_aux(&itoa_p);
 	}
 	else if (itoa_p.n_orig != 0)
 	{
-		if (!(itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char))))
-			return (0);
+		itoa_p.itoa = (char *)ft_calloc(itoa_p.i + 1, sizeof(char));
 		itoa_p.passo = -1;
 	}
 	n = itoa_p.n_orig;

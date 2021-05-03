@@ -14,9 +14,9 @@
 
 int	ft_countword(char const *s1, char c)
 {
-	int len;
-	int n;
-	int i;
+	int	len;
+	int	n;
+	int	i;
 
 	len = ft_strlen(s1);
 	n = 0;

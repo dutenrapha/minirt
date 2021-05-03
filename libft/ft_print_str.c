@@ -14,7 +14,7 @@
 
 void	ft_print_str(t_ptf *parms)
 {
-	char *temp;
+	char	*temp;
 
 	temp = NULL;
 	parms->v_str = va_arg(parms->ap, char *);

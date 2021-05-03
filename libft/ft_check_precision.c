@@ -31,7 +31,7 @@ static void	ft_aux(t_ptf *pms, char *pos)
 	free(temp);
 }
 
-void		ft_check_precision(t_ptf *pms)
+void	ft_check_precision(t_ptf *pms)
 {
 	int		temp2;
 	char	*pos;

@@ -26,7 +26,7 @@
 # define BREAKS			"cspdiuxX%"
 # define FLAGS			"-0.*# +lh"
 
-typedef	struct	s_parms_itoa
+typedef struct s_parms_itoa
 {
 	char		*itoa;
 	long int	n_orig;
@@ -35,7 +35,7 @@ typedef	struct	s_parms_itoa
 	int			passo;
 }				t_pf;
 
-typedef struct	s_params
+typedef struct s_params
 {
 	va_list		ap;
 	int			len_c;

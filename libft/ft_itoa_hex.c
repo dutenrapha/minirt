@@ -21,10 +21,13 @@ char	*ft_itoa_hex(uint32_t nb, char *base)
 
 	base_len = ft_strlen(base);
 	cont_num = 1;
-	aux = nb;
 	str = NULL;
-	while ((aux = aux / base_len) > 0)
+	aux = nb / base_len;
+	while (aux > 0)
+	{
 		cont_num++;
+		aux = aux / base_len;
+	}
 	str = (char *)ft_calloc((cont_num + 1), sizeof(char));
 	if (!str)
 		return (NULL);

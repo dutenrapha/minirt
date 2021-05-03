@@ -32,11 +32,11 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	}
 	if (c == '\0')
-		return (((char*)s + i));
+		return (((char *)s + i));
 	if (last == 0 && existe == 0)
 		return (NULL);
 	else
 	{
-		return ((char*)s + last);
+		return ((char *)s + last);
 	}
 }

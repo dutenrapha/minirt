@@ -42,14 +42,14 @@ static size_t	num_of_words(char const *s, char c)
 	return (total);
 }
 
-static char		*next_word(char const *s, char c)
+static char	*next_word(char const *s, char c)
 {
 	while (*s && *s == c)
 		s++;
-	return ((char*)s);
+	return ((char *)s);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**final;
 	size_t	i;
@@ -58,7 +58,8 @@ char			**ft_split(char const *s, char c)
 	if (s != NULL)
 	{
 		words = num_of_words(s, c);
-		if (!(final = (char**)malloc(sizeof(char*) * (words + 1))))
+		final = (char **)malloc(sizeof(char *) * (words + 1));
+		if (!final)
 			return (NULL);
 		i = 0;
 		while (i < words)

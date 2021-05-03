@@ -19,9 +19,9 @@ static void	ft_aux(t_ptf *parms)
 	ft_padding('r', parms);
 }
 
-void		ft_flag_zeros(t_ptf *parms)
+void	ft_flag_zeros(t_ptf *parms)
 {
-	int temp;
+	int	temp;
 
 	temp = 0;
 	if (parms->flag[1] == '*')

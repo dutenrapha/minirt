@@ -30,7 +30,7 @@ static	void	ft_set_flag(t_ptf *parms)
 	}
 }
 
-static int		ft_len_flag(t_ptf *parms)
+static int	ft_len_flag(t_ptf *parms)
 {
 	int	i;
 	int	j;
@@ -62,7 +62,8 @@ static	void	ft_aux(t_ptf *parms, size_t *end, size_t *end2)
 	j = 0;
 	l_flag = 0;
 	l_flag = ft_len_flag(parms);
-	if (!(parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char))))
+	parms->flag = (char *)ft_calloc(l_flag + 1, sizeof(char));
+	if (!parms->flag)
 		return ;
 	parms->flag[0] = parms->str[parms->i];
 	j = 1;
@@ -75,7 +76,7 @@ static	void	ft_aux(t_ptf *parms, size_t *end, size_t *end2)
 	*end2 = l_flag;
 }
 
-static void		ft_get_flag(t_ptf *parms)
+static void	ft_get_flag(t_ptf *parms)
 {
 	size_t	l_flag;
 	size_t	j;
@@ -99,7 +100,7 @@ static void		ft_get_flag(t_ptf *parms)
 	parms->conversion = parms->flag[j - 1];
 }
 
-void			ft_check_flag(t_ptf *parms)
+void	ft_check_flag(t_ptf *parms)
 {
 	parms->len -= 1;
 	parms->i += 1;

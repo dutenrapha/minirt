@@ -37,7 +37,7 @@ static void	ft_aux(t_ptf *parms, char *temp)
 	}
 }
 
-void		ft_print_xup(t_ptf *parms)
+void	ft_print_xup(t_ptf *parms)
 {
 	char	*temp;
 	int		p;

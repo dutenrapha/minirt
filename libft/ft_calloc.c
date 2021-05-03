@@ -16,7 +16,8 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*array;
 
-	if (!(array = (char *)malloc(size * nmemb)))
+	array = (char *)malloc(size * nmemb);
+	if (!array)
 		return (NULL);
 	return (ft_memset(array, 0, size * nmemb));
 }

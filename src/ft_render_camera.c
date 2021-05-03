@@ -65,7 +65,8 @@ void	ft_render_camera(t_config config, bool save)
 	}
 	else
 	{
-		config.win = mlx_new_window(config.mlx, config.r_x, config.r_y, "miniRT");
+		config.win = mlx_new_window(config.mlx,
+				 config.r_x, config.r_y, "miniRT");
 		mlx_hook(config.win, 33, 1L << 17, closew, &config);
 		mlx_hook(config.win, 2, 1, next_cam, &config);
 		mlx_expose_hook(config.win, expose_hook, &config);

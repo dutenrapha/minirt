@@ -14,10 +14,11 @@
 
 void	ft_print_char(t_ptf *parms)
 {
-	char *temp;
+	char	*temp;
 
 	temp = NULL;
-	if (!(temp = (char *)ft_calloc(2, sizeof(char))))
+	temp = (char *)ft_calloc(2, sizeof(char));
+	if (!temp)
 		return ;
 	parms->v_c = va_arg(parms->ap, int);
 	if (parms->v_c == 0)

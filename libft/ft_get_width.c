@@ -36,7 +36,7 @@ static int	ft_len_flag(t_ptf *parms, int k)
 	return (j);
 }
 
-void		ft_get_width(t_ptf *parms, int k)
+void	ft_get_width(t_ptf *parms, int k)
 {
 	int		l_flag;
 	char	*temp;

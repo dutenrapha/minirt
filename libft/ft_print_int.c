@@ -50,7 +50,7 @@ static void	ft_aux(int diff, t_ptf *parms)
 	parms->len_c = ft_strlen(parms->v_str);
 }
 
-void		ft_print_int(t_ptf *parms)
+void	ft_print_int(t_ptf *parms)
 {
 	char	*temp;
 	int		diff;

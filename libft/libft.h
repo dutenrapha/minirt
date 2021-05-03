@@ -32,7 +32,7 @@
 # define FLAGS			"-0.*# +lh"
 # define BUFFER_SIZE 100
 
-typedef	struct	s_parms_itoa
+typedef struct s_parms_itoa
 {
 	char		*itoa;
 	long int	n_orig;
@@ -41,7 +41,7 @@ typedef	struct	s_parms_itoa
 	int			passo;
 }				t_pf;
 
-typedef struct	s_params
+typedef struct s_params
 {
 	va_list		ap;
 	int			len_c;
@@ -62,7 +62,7 @@ typedef struct	s_params
 	int			i;
 }				t_ptf;
 
-typedef struct	s_listt
+typedef struct s_listt
 {
 	void			*content;
 	struct s_list	*next;
@@ -86,8 +86,8 @@ int				ft_tolower(int c);
 char			*ft_strtrim(char const *s1, char const *set);
 int				ft_countword(char const *s1, char c);
 char			**ft_split(char const *s, char c);
-char			ft_shift(unsigned i, char s);
-char			ft_shift2(unsigned i, char s);
+char			ft_shift(unsigned int i, char s);
+char			ft_shift2(unsigned int i, char s);
 char			*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
@@ -100,7 +100,7 @@ void			ft_lstdelone(t_listt *lst, void (*del)(void*));
 void			ft_lstclear_(t_listt **lst, void (*del)(void*));
 void			ft_lstiter(t_listt *lst, void (*f)(void *));
 t_listt			*ft_lstmap(t_listt *lst, void *(*f)(void *),
-void (*del)(void *));
+					void (*del)(void *));
 int				ft_printf(const char *str, ...);
 void			ft_check_flag(t_ptf *parms);
 int				ft_int_len(intmax_t d);

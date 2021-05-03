@@ -17,7 +17,7 @@ void	ft_canvas(t_config *config, t_world w)
 	t_canvas	c;
 	t_cameras	*camera;
 
-	if (config->c_cameras == NULL)
+	if (config->c_cameras == NULL || config->o_objects == NULL)
 	{
 		c = canvas(config->r_x, config->r_y);
 		cv(&config->c_canvas, c);

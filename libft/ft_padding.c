@@ -71,7 +71,7 @@ static void	ft_aux(t_ptf *pms)
 	pms->v_str[0] = '%';
 }
 
-void		ft_padding(char type, t_ptf *pms)
+void	ft_padding(char type, t_ptf *pms)
 {
 	int	size;
 

@@ -50,7 +50,7 @@ static void	ft_init_pms(t_ptf *parms, const char *str)
 	parms->i = 0;
 }
 
-int			ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	t_ptf	parms;
 

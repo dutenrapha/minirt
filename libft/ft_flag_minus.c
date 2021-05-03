@@ -12,6 +12,14 @@
 
 #include "ft_printf.h"
 
+static void	ft_aux(size_t *w, int temp)
+{
+	if (temp < 0)
+		*w = -temp ;
+	else
+		*w = temp;
+}
+
 void	ft_flag_minus(t_ptf *parms)
 {
 	int		temp;
@@ -30,7 +38,7 @@ void	ft_flag_minus(t_ptf *parms)
 	if (parms->v_ast == 0 && asterisk != NULL && d >= 0)
 	{
 		temp = va_arg(parms->ap, int);
-		parms->width = temp < 0 ? -temp : temp;
+		ft_aux(&parms->width, temp);
 	}
 	if (parms->width == 0)
 		ft_get_width(parms, 1);

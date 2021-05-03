@@ -102,7 +102,7 @@ static int	ft_aux(int size, int fd, char *buf, char **memory)
 	return (size);
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	int				size;
 	char			buf[BUFFER_SIZE + 1];

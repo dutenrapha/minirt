@@ -40,10 +40,10 @@ static char	*ft_aux(t_ptf *parms, char *text)
 	return (temp2);
 }
 
-void		ft_print_p(t_ptf *parms)
+void	ft_print_p(t_ptf *parms)
 {
-	char *temp;
-	char *temp2;
+	char	*temp;
+	char	*temp2;
 
 	temp = NULL;
 	temp2 = NULL;
